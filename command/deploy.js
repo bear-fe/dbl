@@ -1,4 +1,5 @@
-var webpack = require('webpack');
+const path = require('path');
+var webpack = require(path.join(process.cwd(), './node_modules/webpack'))
 
 var gulp = require('gulp');
 var gutil = require('gulp-util');
@@ -19,8 +20,19 @@ function taskWebpack(done){
 function build(){
   var replace = require('gulp-replace');
   var htmlmin = require('gulp-htmlmin');
+  var fileStream = gulp
+      .src(assets + '/*.html')
+      .pipe(replace(/<script(.+)?data-debug([^>]+)?><\/script>/g, ''));
+  if(webpackConf.htmlMin) {
+    fileStream = fileStream.pipe(htmlmin({
+      collapseWhitespace: true,
+      removeComments: true
+    }));
+  }
+  return fileStream.pipe(gulp.dest(assets));
 
-  return gulp
+  //此处源码注释，源码中html压缩是不可选的，不符合需要
+  /*return gulp
       .src(assets + '/*.html')
       .pipe(replace(/<script(.+)?data-debug([^>]+)?><\/script>/g, ''))
       // @see https://github.com/kangax/html-minifier
@@ -28,7 +40,7 @@ function build(){
           collapseWhitespace: true,
           removeComments: true
       }))
-      .pipe(gulp.dest(assets));
+      .pipe(gulp.dest(assets));*/
 }
 
 

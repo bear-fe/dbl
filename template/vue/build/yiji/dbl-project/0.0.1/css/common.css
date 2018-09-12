@@ -1,0 +1,1 @@
+.slide-enter-active,.slide-leave-active{-webkit-transition:-webkit-transform .3s;position:fixed;transition:-webkit-transform .3s;transition:transform .3s;transition:transform .3s,-webkit-transform .3s}.slide-enter{-ms-transform:translateX(100%);-webkit-transform:translateX(100%);transform:translateX(100%)}

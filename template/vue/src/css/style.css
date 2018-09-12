@@ -1,0 +1,13 @@
+
+:root {
+  --bg: #fff;
+}
+
+.slide-enter-active, .slide-leave-active {
+  position: fixed;
+  transition: transform .3s;
+}
+
+.slide-enter {
+  transform: translateX(100%);
+}

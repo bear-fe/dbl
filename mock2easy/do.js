@@ -9,7 +9,7 @@ module.exports = function(program){
       req.body[name] = encodeURI(req.body[name]);
     }
     
-    var _write = JSON.stringify(req.body);
+    var _write = JSON.stringify(req.body) || '';
 
     var options = {
       hostname: '127.0.0.1',
